@@ -1,101 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Locadora</title>
+{% block content %}
+    {% if movies %}
 
     <!-- Carregar o módulo estático do Django -->
-    {% load static %}
-
-    <!-- Link para o arquivo CSS do Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Link para o arquivo CSS customizado -->
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-</head>
-
-<body>
-<header class="bg-custom">
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-end">
-            <!-- Logo da empresa -->
-            <div class="logo">
-                <img src="{% static 'img/logo.png' %}" alt="Logo" class="img-fluid" aria-label="Logo da empresa">
-            </div>
-
-            <!-- Menu de navegação -->
-            <nav class="menu">
-                <ul class="nav justify-content-center">
-                    <li class="nav-item"><a href="#" class="nav-link text-light">Home</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-light">Busca</a></li>
-                    <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle text-light" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{% url 'home' %}">Todas</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#">Ação</a></li>
-                        <li><a class="dropdown-item" href="#">Drama</a></li>
-                        <li><a class="dropdown-item" href="#">Comédia</a></li>
-                    </ul>
-                </li>
-
-                    <li class="nav-item"><a href="#" class="nav-link text-light">Sobre</a></li>
-                </ul>
-            </nav>
-
-            <!-- Carrinho de compras e área de login -->
-            <div class="d-flex align-items-center">
-                <a href="#" class="btn btn-outline-light me-3">
-                    <i class="bi-cart-fill me-1" aria-hidden="true"></i>
-                    Cart
-                    <span class="badge bg-light-subtle text-dark ms-1 rounded-pill" id="cart_quantity">2</span>
-                </a>
-                </div>
-            <div class="d-flex align-items-center">
-                <div class="login">
-                    <a href="#" class="btn btn-outline-dark">Login</a>
-                </div>
-                    <a href="#" class="btn btn-link text-decoration-none ms-2 text-light" aria-label="Register">Register</a>
-            </div>
-        </div>
-    </div>
-</header>
-
-
-<main class="container mt-5" style="padding-top: 160px; padding-bottom: 100px;">  <!-- Ajuste as margens aqui -->
-    <div class="row">
-
-        {% if movies %}
-
-        {% for movie in movies  %}        
-        <!-- Card -->
-        <div class="col-md-3 mb-4">
-            <div class="card">
-                <img src="{% static 'img/cover/' %}{{movie.Poster}}" class="card-img-top" alt={{movie.Title}}>
-                <div class="card-body">
-                    <h4 class="card-text">{{movie.Title}}</h4>
-                    {% if movie.Available %}
-                    <pre>Available</pre>
-                    {% endif %}
+        {% load static %}
+            {% for movie in movies  %}        
+            <!-- Card -->
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="{% static 'img/cover/' %}{{movie.Poster}}" class="card-img-top" alt={{movie.Title}}>
+                    <div class="card-body">
+                        {% if movie.Available %}
+                            <h4 class="card-text">{{movie.Title}}</h4>
+                            <pre class="text-success-emphasis">Available</pre>
+                        {% else %}
+                            <h5 class="card-text text-muted text-decoration-line-through">{{movie.Title}}</h5>
+                            <pre class="text-muted text-decoration-line-through">Unavailable</pre>
+                        {% endif %}
+                        {% if movie.Watched %}
+                            <pre class="text-danger-emphasis">Watched</pre>
+                        {% else %}
+                            <pre class="text-success">Not viewed</pre>                            
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
-         {% endfor %}
-         {% else %}
-            <h2>No movies found for this selection</h2>
-         {% endif %}
-    </div> <!-- Fim da linha do grid -->
-</main>
+            {% endfor %}
 
 
-    <footer class="bg-custom text-center py-3">
-        <small>&copy; 2024 Todos os direitos reservados</small>
-    </footer>
+    {% else %}
+        <h2>No movies found for this selection</h2>
+    {% endif %}
 
-    <!-- Script do Bootstrap para funcionalidades JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
 
-</html>
+{% endblock content %}

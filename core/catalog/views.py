@@ -4,14 +4,14 @@ catalog = [
     {
         'Title':'The Dark Knight',
         'Poster': '1.jpg',
-        'Available': True,
+        'Available': False,
         'Watched' : False
     },
     {
         'Title': 'Inception',
         'Poster': '2.jpg',
         'Available': True,
-        'Watched': False
+        'Watched': True
     },
     {
         'Title': 'Fight Club',
@@ -66,3 +66,6 @@ catalog = [
 
 def home(request):
     return render(request, 'home.html', {'movies':catalog})
+
+def about(request):
+    return render(request, 'about.html',{})
