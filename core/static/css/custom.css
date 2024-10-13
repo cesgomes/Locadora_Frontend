@@ -1,0 +1,60 @@
+/* Estilização compartilhada entre header e footer */
+.bg-custom {
+    background-color: hwb(210 69% 14%);
+    color: #000;
+    /* Cor do texto no header e footer */
+}
+
+/* Garantir que o body ocupe 100% da altura da página */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #cfdde8;
+}
+
+/* O conteúdo principal deve ter um mínimo de altura para preencher o espaço */
+main {
+    min-height: calc(100vh - 80px);
+    /* Subtrair a altura do header e do footer */
+}
+
+/* Footer fixo na parte inferior */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #b0c6dc;
+    text-align: center;
+    padding: 10px 0;
+}
+
+header {
+    position: fixed;
+    /* Fixar o header na parte superior */
+    top: 0;
+    /* Alinhar no topo da página */
+    left: 0;
+    /* Alinhar à esquerda */
+    width: 100%;
+    /* Ocupa toda a largura da página */
+    z-index: 1000;
+    /* Manter o header acima de outros conteúdos */
+    padding-bottom: 20px;
+    /* Espaço adicional na parte inferior do header */
+}
+
+/* Ajustes na área de login */
+.login .btn {
+    color: #000;}
+
+/* custom.css *//* Estilos para o logo */
+.logo img {
+    width: 250px;
+    /* Define a largura do logo */
+    height: 150px;
+    /* Define a altura do logo */
+    object-fit: contain;
+    /* Garante que a imagem mantenha a proporção */
+}
