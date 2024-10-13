@@ -1,8 +1,8 @@
 /* Estilização compartilhada entre header e footer */
 .bg-custom {
-    background-color: hwb(210 69% 14%);
-    color: #000;
-    /* Cor do texto no header e footer */
+    background-color: #354a5f;
+    color: #fff;
+    /* Define o texto como branco */
 }
 
 /* Garantir que o body ocupe 100% da altura da página */
@@ -25,36 +25,56 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #b0c6dc;
+    background-color: #354a5f;
     text-align: center;
     padding: 10px 0;
 }
 
+/* Fixar o header no topo da página */
 header {
     position: fixed;
-    /* Fixar o header na parte superior */
     top: 0;
-    /* Alinhar no topo da página */
     left: 0;
-    /* Alinhar à esquerda */
     width: 100%;
-    /* Ocupa toda a largura da página */
     z-index: 1000;
-    /* Manter o header acima de outros conteúdos */
     padding-bottom: 20px;
-    /* Espaço adicional na parte inferior do header */
+    /* Espaço extra no final do header */
+}
+
+/* Estilo para links no header (menu e login/register) */
+header a {
+    color: #fff;
+    /* Define a cor dos links como branca */
+    text-decoration: none;
+    /* Remove sublinhado dos links */
+}
+
+/* Cor ao passar o mouse nos links */
+header a:hover {
+    color: #ddd;
+    /* Cor mais clara ao passar o mouse */
 }
 
 /* Ajustes na área de login */
-.login .btn {
-    color: #000;}
+.login .btn-outline-dark {
+    color: #fff;
+    /* Cor do texto branco no botão de login */
+    border-color: #fff;
+    /* Cor da borda do botão de login */
+}
 
-/* custom.css *//* Estilos para o logo */
+/* Estilo ao passar o mouse sobre o botão de login */
+.login .btn-outline-dark:hover {
+    background-color: #fff;
+    /* Fundo branco no hover */
+    color: #354a5f;
+    /* Texto escuro no hover */
+}
+
+/* Estilos para o logo */
 .logo img {
     width: 250px;
-    /* Define a largura do logo */
     height: 150px;
-    /* Define a altura do logo */
     object-fit: contain;
     /* Garante que a imagem mantenha a proporção */
 }
