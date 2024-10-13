@@ -66,26 +66,60 @@
 
 <main class="container mt-5" style="padding-top: 160px; padding-bottom: 100px;">  <!-- Ajuste as margens aqui -->
     <div class="row">
-
-        {% if movies %}
-
-        {% for movie in movies  %}        
-        <!-- Card -->
+        <!-- Card 1 -->
         <div class="col-md-3 mb-4">
             <div class="card">
-                <img src="{% static 'img/cover/' %}{{movie.Poster}}" class="card-img-top" alt={{movie.Title}}>
+                <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h4 class="card-text">{{movie.Title}}</h4>
-                    {% if movie.Available %}
-                    <pre>Available</pre>
-                    {% endif %}
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
             </div>
         </div>
-         {% endfor %}
-         {% else %}
-            <h2>No movies found for this selection</h2>
-         {% endif %}
+
+        <!-- Repita os cards abaixo conforme necessário -->
+        
+        <!-- Card 2 -->
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text for card 2.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Continue adicionando mais cards conforme necessário -->
+
+        <div class="col-md-3 mb-4">  
+            <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text for card 3.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">  
+            <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text for card 4.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Adicione mais cards conforme necessário -->
+        
+        <div class="col-md-3 mb-4">  
+            <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text for card 5.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Continue repetindo para os outros cards... -->
     </div> <!-- Fim da linha do grid -->
 </main>
 
