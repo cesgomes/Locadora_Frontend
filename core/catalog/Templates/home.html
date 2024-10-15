@@ -9,19 +9,21 @@
             <!-- Card -->
             <div class="col-md-3 mb-4">
                 <div class="card">
-                    <img src="{% static 'img/cover/' %}{{movie.Poster}}" class="card-img-top" alt={{movie.Title}}>
+                    <img src="{% static 'img/cover/' %}{{movie.Id}}.jpg" class="card-img-top" alt={{movie.Title}}>
                     <div class="card-body">
                         {% if movie.Available %}
-                            <h4 class="card-text">{{movie.Title}}</h4>
-                            <pre class="text-success-emphasis">Available</pre>
+                            <h5 class="card-title">{{movie.Title}}</h5>
+                            <br/>
+                            <p class="card-text">Available</p>
                         {% else %}
-                            <h5 class="card-text text-muted text-decoration-line-through">{{movie.Title}}</h5>
-                            <pre class="text-muted text-decoration-line-through">Unavailable</pre>
+                            <h5 class="card-title text-muted text-decoration-line-through">{{movie.Title}}</h5>
+                            <br/>
+                            <p class="card-text text-muted text-decoration-line-through">Unavailable</p>
                         {% endif %}
                         {% if movie.Watched %}
-                            <pre class="text-danger-emphasis">Watched</pre>
+                            <p class="card-text text-danger-emphasis">Watched</p>
                         {% else %}
-                            <pre class="text-success">Not viewed</pre>                            
+                            <p class="card-text text-success">Not viewed</p>                            
                         {% endif %}
                     </div>
                 </div>
