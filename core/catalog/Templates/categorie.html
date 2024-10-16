@@ -37,4 +37,44 @@
     {% else %}
         <h2>No movies found for this selection</h2>
     {% endif %}
+
+
+    {% if total_pages > 1 %}
+    <nav aria-label="Page navigation" class="d-flex justify-content-center mt-4">
+        <ul class="pagination">
+            <!-- Botão para ir para a primeira página -->
+            {% if current_page > 1 %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1" aria-label="First">
+                        <span aria-hidden="true">&laquo;&laquo;</span> First
+                    </a>
+                </li>
+                <!-- Botão para ir para a página anterior -->
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ current_page|add:-1 }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span> Previous
+                    </a>
+                </li>
+            {% endif %}
+
+            <!-- Exibir o número da página atual -->
+            <li class="page-item active"><span class="page-link text-bg-secondary">Pág {{ current_page }}</span></li>
+
+            <!-- Botão para ir para a próxima página -->
+            {% if current_page < total_pages %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ current_page|add:1 }}" aria-label="Next">
+                        Next <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                <!-- Botão para ir para a última página -->
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ total_pages }}" aria-label="Last">
+                        Last <span aria-hidden="true">&raquo;&raquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
 {% endblock content %}
