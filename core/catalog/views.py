@@ -7,7 +7,27 @@ import os
 # Carregar as variáveis de ambiente
 load_dotenv()
 
+def categories(request, id):
+    auth = get_sap_auth()
+    session = requests.Session()
+    sap_url = f"http://localhost:8000/sap/opu/odata/SAP/Z_BLOCKBUSTER_SRV/CatalogSet?$top=12&$skip=0&$filter=substringof('{id}',Genre) and true"
+    sap_ep = 'http://localhost:8000/sap/opu/odata/SAP/Z_BLOCKBUSTER_SRV/'
+    cats = get_categories(session=session, auth=auth)   
+     
+    csrf_token = get_csrf_token(session, sap_ep, auth)
 
+
+    catalog = []
+    if csrf_token:
+        headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "X-CSRF-Token": csrf_token
+        }
+        catalog = fetch_data_from_sap(session, sap_url, headers, auth).get('results', [])
+
+    return render(request, 'categorie.html', {'movies': catalog, 'cats': cats, 'cat': cats[id]})
+    
 def get_categories(session,  auth):
     
 

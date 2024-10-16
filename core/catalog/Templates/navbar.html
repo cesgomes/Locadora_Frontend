@@ -11,7 +11,7 @@
                             <li><a class="dropdown-item" href="{% url 'home' %}">Todas</a></li>
                             <li><hr class="dropdown-divider" /></li>
                             {% for id, genre in cats.items %}
-                                <li><a class="dropdown-item" href="{{ id }}">{{ genre }}</a></li>
+                                <li><a class="dropdown-item" href="{% url "categories" id=id %}">{{ genre }}</a></li>
                             {% endfor %}
                         </ul>
                     </li>                </li>
