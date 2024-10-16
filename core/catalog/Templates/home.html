@@ -3,51 +3,55 @@
 {% block content %}
 
     {% if movies %}
-
-    <!-- Carregar o módulo estático do Django -->
+    <!-- Load Django's static module for serving static files -->
     {% load static %}
-        <div class="row">
-            {% for movie in movies %}
-            <!-- Card -->
-            <div class="col-md-3 mb-4">
-                <div class="card">
-                    <!-- Adicionando o link ao card -->
-                    <a href="{% url 'movie_detail' movie.Id %}" class="stretched-link">
-                        <img src="{% static 'img/cover/' %}{{ movie.Id }}.jpg" class="card-img-top" alt="{{ movie.Title }}">
-                        <div class="card-body">
-                            {% if movie.Available %}
-                                <h5 class="card-title">{{ movie.Title }}</h5>
-                                <p class="card-text">Available</p>
-                            {% else %}
-                                <h5 class="card-title text-muted text-decoration-line-through">{{ movie.Title }}</h5>
-                                <p class="card-text text-muted text-decoration-line-through">Unavailable</p>
-                            {% endif %}
-                            {% if movie.Watched %}
-                                <p class="card-text text-danger-emphasis">Watched</p>
-                            {% else %}
-                                <p class="card-text text-success">Not viewed</p>                            
-                            {% endif %}
-                        </div>
-                    </a>
-                </div>
+    <div class="row">
+        {% for movie in movies %}
+        <!-- Movie Card -->
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <!-- Link to movie detail page -->
+                <a href="{% url 'movie_detail' movie.Id %}" class="stretched-link">
+                    <!-- Movie cover image -->
+                    <img src="{% static 'img/cover/' %}{{ movie.Id }}.jpg" class="card-img-top" alt="{{ movie.Title }}">
+                    <div class="card-body">
+                        <!-- Display movie title and availability status -->
+                        {% if movie.Available %}
+                            <h5 class="card-title">{{ movie.Title }}</h5>
+                            <p class="card-text">Available</p>
+                        {% else %}
+                            <h5 class="card-title text-muted text-decoration-line-through">{{ movie.Title }}</h5>
+                            <p class="card-text text-muted text-decoration-line-through">Unavailable</p>
+                        {% endif %}
+                        <!-- Display watched status -->
+                        {% if movie.Watched %}
+                            <p class="card-text text-danger-emphasis">Watched</p>
+                        {% else %}
+                            <p class="card-text text-success">Not viewed</p>                            
+                        {% endif %}
+                    </div>
+                </a>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
+    </div>
     {% else %}
+        <!-- Message when no movies are found -->
         <h2>No movies found for this selection</h2>
     {% endif %}
 
     {% if total_pages > 1 %}
+    <!-- Pagination controls -->
     <nav aria-label="Page navigation" class="d-flex justify-content-center mt-4">
         <ul class="pagination">
-            <!-- Botão para ir para a primeira página -->
+            <!-- Button to go to the first page -->
             {% if current_page > 1 %}
                 <li class="page-item">
                     <a class="page-link" href="?page=1" aria-label="First">
                         <span aria-hidden="true">&laquo;&laquo;</span> First
                     </a>
                 </li>
-                <!-- Botão para ir para a página anterior -->
+                <!-- Button to go to the previous page -->
                 <li class="page-item">
                     <a class="page-link" href="?page={{ current_page|add:-1 }}" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span> Previous
@@ -55,17 +59,17 @@
                 </li>
             {% endif %}
 
-            <!-- Exibir o número da página atual -->
-            <li class="page-item active"><span class="page-link text-bg-secondary">Pág {{ current_page }}</span></li>
+            <!-- Display current page number -->
+            <li class="page-item active"><span class="page-link text-bg-secondary">Page {{ current_page }}</span></li>
 
-            <!-- Botão para ir para a próxima página -->
+            <!-- Button to go to the next page -->
             {% if current_page < total_pages %}
                 <li class="page-item">
                     <a class="page-link" href="?page={{ current_page|add:1 }}" aria-label="Next">
                         Next <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
-                <!-- Botão para ir para a última página -->
+                <!-- Button to go to the last page -->
                 <li class="page-item">
                     <a class="page-link" href="?page={{ total_pages }}" aria-label="Last">
                         Last <span aria-hidden="true">&raquo;&raquo;</span>

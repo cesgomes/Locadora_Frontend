@@ -6,24 +6,30 @@
         <div class="d-flex justify-content-between align-items-end">
             <!-- Logo da empresa -->
             <div class="logo">
-                <img src="{% static 'img/logo.png' %}" alt="Logo" class="img-fluid" aria-label="Logo da empresa">
+                <!-- Imagem do logo da empresa -->
+                <img src="{% static 'img/logo.png' %}" alt="Logo da empresa" class="img-fluid" aria-label="Logo da empresa">
             </div>
 
+            <!-- Inclusão da barra de navegação -->
             {% include "navbar.html" %}
 
-            <!-- Carrinho de compras e área de login -->
+            <!-- Seção do carrinho de compras e área de login -->
             <div class="d-flex align-items-center">
-                <a href="#" class="btn btn-outline-light me-3">
+                <!-- Link para o carrinho de compras -->
+                <a href="#" class="btn btn-outline-light me-3" aria-label="Ver carrinho de compras">
                     <i class="bi-cart-fill me-1" aria-hidden="true"></i>
-                    Cart
+                    Carrinho
+                    <!-- Indicador de quantidade de itens no carrinho -->
                     <span class="badge bg-light-subtle text-dark ms-1 rounded-pill" id="cart_quantity">2</span>
                 </a>
-                </div>
+            </div>
             <div class="d-flex align-items-center">
+                <!-- Link para login -->
                 <div class="login">
-                    <a href="#" class="btn btn-outline-dark">Login</a>
+                    <a href="#" class="btn btn-outline-dark" aria-label="Fazer login">Login</a>
                 </div>
-                    <a href="#" class="btn btn-link text-decoration-none ms-2 text-light" aria-label="Register">Register</a>
+                <!-- Link para registro -->
+                <a href="#" class="btn btn-link text-decoration-none ms-2 text-light" aria-label="Registrar-se">Registrar</a>
             </div>
         </div>
     </div>

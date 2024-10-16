@@ -1,48 +1,47 @@
-|{% extends "base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 {% load static %}
 
-{% if detail  %}
-
-
-<div class="card mb-3" >
+{% if detail %}
+<!-- Card container for displaying movie details -->
+<div class="card mb-3">
   <div class="row g-0">
+    <!-- Column for movie cover image -->
     <div class="col-md-4">
       <img src="{% static 'img/cover/' %}{{detail.Id}}.jpg" class="img-fluid rounded-start" alt="{{detail.Title}}">
     </div>
+    <!-- Column for movie details -->
     <div class="col-md-8">
       <div class="card-body">
-        <h1 class="card-title"><strong>{{ detail.Title }}</strong></h5>
+        <!-- Movie title -->
+        <h1 class="card-title"><strong>{{ detail.Title }}</strong></h1>
+        <!-- Movie details -->
         <p class="card-text"><strong>Release Year:</strong> {{ detail.Ryear }}</p>
         <p class="card-text"><strong>Rated:</strong> {{ detail.Rated }}</p>
         <p class="card-text"><strong>Runtime:</strong> {{ detail.Runtime }} minutes</p>
-        <p class="card-text"><strong>Genre:</strong> {{ detail.Genre }}    </p>
-        <p class="card-text"><strong>Director:</strong> {{ detail.Director }}    </p>
-        <p class="card-text"><strong>Writer:</strong> {{ detail.Writer }}    </p>
-        <p class="card-text"><strong>Actors:</strong> {{ detail.Actors }}    </p>
-        <p class="card-text" "text-align: justify;"><strong>Plot:</strong> {{ detail.Plot }}   </p>
-        <p class="card-text"><strong>Language:</strong> {{ detail.Language }}   </p>
-        <p class="card-text"><strong>Country:</strong> {{ detail.Country }}    </p>
-        <p class="card-text"><strong>Metascore:</strong> {{ detail.Metascore }}    </p>
-
+        <p class="card-text"><strong>Genre:</strong> {{ detail.Genre }}</p>
+        <p class="card-text"><strong>Director:</strong> {{ detail.Director }}</p>
+        <p class="card-text"><strong>Writer:</strong> {{ detail.Writer }}</p>
+        <p class="card-text"><strong>Actors:</strong> {{ detail.Actors }}</p>
+        <!-- Plot with justified text alignment -->
+        <p class="card-text" style="text-align: justify;"><strong>Plot:</strong> {{ detail.Plot }}</p>
+        <p class="card-text"><strong>Language:</strong> {{ detail.Language }}</p>
+        <p class="card-text"><strong>Country:</strong> {{ detail.Country }}</p>
+        <p class="card-text"><strong>Metascore:</strong> {{ detail.Metascore }}</p>
       </div>
     </div>
   </div>
+  <!-- Buttons for actions -->
   <div class="d-flex justify-content-center">
     <a href="#" class="btn btn-success me-lg-5 btn-sm">Adicionar ao carrinho</a>
     <a href="{% url "home" %}" class="btn btn-info btn-sm">Retornar à página inicial</a>
+  </div>
 </div>
-</div>
-
 
 {% else %}
-
-<h1> Nenhum filme encontrado
-
+<!-- Message displayed when no movie is found -->
+<h1>Nenhum filme encontrado</h1>
 {% endif %}
-
-
-
 
 {% endblock content %}

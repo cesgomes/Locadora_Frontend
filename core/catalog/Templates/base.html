@@ -1,14 +1,21 @@
-
+<!-- Inclui o arquivo de cabeçalho padrão -->
 {% include "head.html" %}
 
+<!-- Inclui o cabeçalho do site -->
 {% include "header.html" %}
-<main class="container mt-5" style="padding-top: 160px; padding-bottom: 100px;">  <!-- Ajuste as margens aqui -->
+
+<!-- Início do conteúdo principal da página -->
+<main class="container mt-5" style="padding-top: 160px; padding-bottom: 100px;">
+    <!-- Ajuste as margens superiores e inferiores conforme necessário -->
     <div class="row">
+        <!-- Bloco de conteúdo dinâmico que será substituído em páginas específicas -->
         {% block content %}
         {% endblock %}
     </div> <!-- Fim da linha do grid -->
 </main>
+<!-- Fim do conteúdo principal -->
 
-    {% include "footer.html" %}
+<!-- Inclui o rodapé do site -->
+{% include "footer.html" %}
 
-</html>
+<!-- Nota: Certifique-se de que a tag <html> de abertura esteja presente no arquivo "head.html" -->

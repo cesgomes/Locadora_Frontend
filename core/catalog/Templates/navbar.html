@@ -1,21 +1,41 @@
-            <!-- Menu de navegação -->
-            <nav class="menu">
-                <ul class="nav justify-content-center">
-                    <li class="nav-item"><a href="{% url "home" %}" class="nav-link text-light">Home</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-light">Search</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-light" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Categorias
-                        </a>
-                        <ul class="dropdown-menu overflow-auto" style="max-height: 300px;" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{% url 'home' %}">Todas</a></li>
-                            <li><hr class="dropdown-divider" /></li>
-                            {% for id, genre in cats.items %}
-                                <li><a class="dropdown-item" href="{% url "categories" id=id %}">{{ genre }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </li>                </li>
+<!-- Menu de navegação principal -->
+<nav class="menu">
+    <ul class="nav justify-content-center">
+        <!-- Link para a página inicial -->
+        <li class="nav-item">
+            <a href="{% url 'home' %}" class="nav-link text-light">Home</a>
+        </li>
+        
+        <!-- Link para a funcionalidade de busca (atualmente sem URL) -->
+        <li class="nav-item">
+            <a href="#" class="nav-link text-light">Search</a>
+        </li>
+        
+        <!-- Dropdown para categorias -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-light" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Categorias
+            </a>
+            <ul class="dropdown-menu overflow-auto" style="max-height: 300px;" aria-labelledby="navbarDropdown">
+                <!-- Link para todas as categorias -->
+                <li>
+                    <a class="dropdown-item" href="{% url 'home' %}">Todas</a>
+                </li>
+                <li>
+                    <hr class="dropdown-divider" />
+                </li>
+                <!-- Iteração sobre as categorias disponíveis -->
+                {% for id, genre in cats.items %}
+                    <li>
+                        <a class="dropdown-item" href="{% url 'categories' id=id %}">{{ genre }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
 
-                    <li class="nav-item"><a href="{% url "about" %}" class="nav-link text-light">About</a></li>
-                </ul>
-            </nav>
+        <!-- Link para a página "Sobre" -->
+        <li class="nav-item">
+            <a href="{% url 'about' %}" class="nav-link text-light">About</a>
+        </li>
+    </ul>
+</nav>
