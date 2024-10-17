@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form class="container mt-5 p-4 border rounded">
+    <h2 class="text-center mb-4">Bem vindo a LokaDora</h2>
+    <p class="text-center mb-4">Para continuar o teu cadastro, por favor informe o teu e-mail abaixo</p>
+    <div class="row mb-3 justify-content-center">
+        <label for="email" class="col-sm-2 col-form-label col-form-label-lg text-end">Email</label>
+        <div class="col-sm-6">
+            <input type="email" class="form-control form-control-lg" id="email" placeholder="E-mail" required>
+        </div>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary btn-lg">Register</button>
+    </div>
+</form>
+
+{% endblock content %}
