@@ -16,15 +16,14 @@ def registration_sent(request):
 
 def register(request):
     if request.method == 'POST':
-        print('POST !!!')
         email = request.POST.get('email')
 
-        print(email)
         # Gerar um token único
         token = hashlib.sha256(get_random_string(50).encode()).hexdigest()
 
         # Criar um objeto de token com validade de 24 horas (ou tempo que preferir)
         expiration = timezone.now() + timedelta(hours=4)
+        print(f'Expira as {expiration}')
         RegistrationToken.objects.create(email=email, token=token, expiration=expiration)
 
         # Criar o link para o usuário continuar o cadastro
@@ -43,15 +42,12 @@ def register(request):
         # Redirecionar para uma página de confirmação
         # Criar uma página para confirmação
         return redirect('registration_sent')
-    else:
-        return render(request, 'register.html')
 
-    # Seu template do formulário
-    return render(request, 'registration_form.html')
+    return render(request, 'register.html')
 
 
 def complete_registration(request, token):
-    token_obj = get_object_or_404(RegistrationToken, token=token)
+    token_obj = get_object_or_404(RegistrationToken, token=token) # type: ignore
 
     # Verificar se o token ainda é válido
     if not token_obj.is_valid():
